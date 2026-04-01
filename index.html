@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>내 첫번째 아이디어</title>
+    <title>응원 메시지</title>
     <style>
         body {
             margin: 0;
@@ -11,42 +12,43 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #2d0a0a 0%, #0f0f0f 100%);
+            background: linear-gradient(135deg, #f5f5f7 0%, #d2d2d7 100%);
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             overflow: hidden;
-            color: #ffffff;
+            color: #1d1d1f;
         }
-        
+
         .container {
             text-align: center;
-            padding: 4rem 6rem;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 77, 77, 0.2);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            padding: 5rem 7rem;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
             transform: scale(0.9);
             opacity: 0;
-            animation: emerge 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            animation: emerge 1.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
         h1 {
             margin: 0;
-            color: #ff4d4d; /* 프리미엄 레드 */
-            font-size: 5.5rem; /* 대폭 확대 */
-            font-weight: 900;
-            letter-spacing: -0.03em;
-            text-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+            color: #1d1d1f;
+            /* 프리미엄 차콜 그레이 */
+            font-size: 46px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             line-height: 1.2;
         }
 
         p {
-            margin-top: 1.5rem;
-            color: rgba(255, 77, 77, 0.6);
-            font-size: 1.4rem;
-            font-weight: 300;
-            letter-spacing: 0.2em;
+            margin-top: 1.8rem;
+            color: rgba(29, 29, 31, 0.4);
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.3em;
             text-transform: uppercase;
         }
 
@@ -55,34 +57,149 @@
                 transform: scale(0.8) translateY(20px);
                 opacity: 0;
             }
+
             100% {
                 transform: scale(1) translateY(0);
                 opacity: 1;
             }
         }
 
-        /* 배경에 은은한 붉은 광채 효과 추가 */
+        /* 배경에 은은한 빛 효과 추가 */
         .glow {
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 77, 77, 0.1) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
             z-index: -1;
-            filter: blur(50px);
-            animation: pulse 4s infinite alternate;
+            filter: blur(100px);
+            animation: pulse 6s infinite alternate;
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.2); opacity: 0.8; }
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        .btn {
+            margin-top: 2.8rem;
+            padding: 1rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            outline: none;
+            color: white;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .btn:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* 버튼 색상 클래스 */
+        .btn-blue {
+            background: linear-gradient(135deg, #007aff 0%, #0051d7 100%);
+            box-shadow: 0 15px 30px rgba(0, 122, 255, 0.25);
+        }
+
+        .btn-blue:hover {
+            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.35);
+            background: linear-gradient(135deg, #1d8fff 0%, #0062ff 100%);
+        }
+
+        .btn-yellow {
+            background: linear-gradient(135deg, #ffcc00 0%, #ffb300 100%);
+            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.3);
+            color: #1d1d1f;
+        }
+
+        .btn-yellow:hover {
+            box-shadow: 0 20px 40px rgba(255, 204, 0, 0.45);
+            background: linear-gradient(135deg, #ffdb4d 0%, #ffc400 100%);
+        }
+
+        .btn-orange {
+            background: linear-gradient(135deg, #ff9500 0%, #ff5e3a 100%);
+            box-shadow: 0 15px 30px rgba(255, 149, 0, 0.3);
+            color: white;
+        }
+
+        .btn-orange:hover {
+            box-shadow: 0 20px 40px rgba(255, 149, 0, 0.45);
+            background: linear-gradient(135deg, #ffb34d 0%, #ff7b5e 100%);
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #34c759 0%, #248a3d 100%);
+            box-shadow: 0 15px 30px rgba(52, 199, 89, 0.3);
+            color: white;
+        }
+
+        .btn-green:hover {
+            box-shadow: 0 20px 40px rgba(52, 199, 89, 0.45);
+            background: linear-gradient(135deg, #5de07e 0%, #2eb052 100%);
         }
     </style>
 </head>
+
 <body>
     <div class="glow"></div>
     <div class="container">
-        <h1>내 첫번째 아이디어</h1>
+        <h1 id="main-sentence">오늘도 힘내세요!</h1>
         <p>INNOVATION & VISION</p>
+        <button class="btn btn-blue" id="next-btn">다음 문장 보기</button>
     </div>
+
+    <script>
+        const sentences = [
+            "오늘도 힘내세요!",
+            "오늘도 해냈어!",
+            "조금씩 나아지고 있어",
+            "그래 이대로 가봐"
+        ];
+        let currentIndex = 0;
+
+        const titleElement = document.getElementById('main-sentence');
+        const nextBtn = document.getElementById('next-btn');
+
+        nextBtn.addEventListener('click', () => {
+            // 전환 효과 시작 (텍스트)
+            titleElement.style.opacity = '0';
+            titleElement.style.transform = 'translateY(10px)';
+            titleElement.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+
+            setTimeout(() => {
+                // 인덱스 증가 및 문구 변경
+                currentIndex = (currentIndex + 1) % sentences.length;
+                titleElement.textContent = sentences[currentIndex];
+
+                // 버튼 테마 클래스 배열
+                const themes = ['btn-blue', 'btn-yellow', 'btn-orange', 'btn-green'];
+
+                // 클래스 교체 (기존 클래스 모두 제거 후 필수 클래스 추가)
+                nextBtn.className = 'btn ' + themes[currentIndex];
+
+                // 전환 효과 종료 (텍스트)
+                titleElement.style.opacity = '1';
+                titleElement.style.transform = 'translateY(0)';
+            }, 300);
+        });
+    </script>
 </body>
+
 </html>
