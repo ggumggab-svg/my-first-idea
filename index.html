@@ -4,166 +4,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>응원 메시지</title>
+    <title>나의 첫 서비스</title>
     <style>
+        :root {
+            --header-bg: linear-gradient(135deg, #007aff 0%, #0051d7 100%);
+            --footer-bg: #f5f5f7;
+            --main-bg: #ffffff;
+            --section-bg-alt: #fbfbfd;
+            --text-dark: #1d1d1f;
+            --text-light: #ffffff;
+            --text-gray: #86868b;
+            --primary: #007aff;
+        }
+
         body {
             margin: 0;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background: linear-gradient(135deg, #f5f5f7 0%, #d2d2d7 100%);
+            flex-direction: column;
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            overflow: hidden;
-            color: #1d1d1f;
+            color: var(--text-dark);
+            background: var(--main-bg);
+            overflow-x: hidden;
+        }
+
+        header {
+            background: var(--header-bg);
+            padding: 1rem 3rem;
+            color: var(--text-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+            z-index: 100;
+            position: sticky;
+            top: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+            cursor: pointer;
+        }
+
+        header nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        header nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            opacity: 0.85;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header nav a:hover {
+            opacity: 1;
+            transform: translateY(-1px);
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        section {
+            padding: 6rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .section-feature {
+            background: radial-gradient(circle at 10% 20%, rgba(0, 122, 255, 0.03) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 80%, rgba(0, 122, 255, 0.05) 0%, transparent 40%);
+            min-height: 80vh;
+        }
+
+        .section-reviews {
+            background: var(--section-bg-alt);
+        }
+
+        .section-title {
+            margin-bottom: 3.5rem;
+            font-size: 2.8rem;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(135deg, #1d1d1f 0%, #434343 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
         }
 
         .container {
             text-align: center;
-            padding: 5rem 7rem;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            padding: 4.5rem 5rem;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.08);
-            transform: scale(0.9);
-            opacity: 0;
-            animation: emerge 1.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            width: 90%;
+            animation: emerge 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
         }
 
-        h1 {
+        .container h2#main-sentence {
             margin: 0;
-            color: #1d1d1f;
-            /* 프리미엄 차콜 그레이 */
-            font-size: 46px;
+            color: var(--text-dark);
+            font-size: 42px;
             font-weight: 800;
             letter-spacing: -0.02em;
-            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
             line-height: 1.2;
         }
 
-        p {
-            margin-top: 1.8rem;
-            color: rgba(29, 29, 31, 0.4);
-            font-size: 1.1rem;
-            font-weight: 500;
-            letter-spacing: 0.3em;
+        .container p.subtitle {
+            margin-top: 1.5rem;
+            color: rgba(29, 29, 31, 0.5);
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
         }
 
         @keyframes emerge {
-            0% {
-                transform: scale(0.8) translateY(20px);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
+            0% { transform: scale(0.95) translateY(40px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
         }
 
-        /* 배경에 은은한 빛 효과 추가 */
-        .glow {
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
-            z-index: -1;
-            filter: blur(100px);
-            animation: pulse 6s infinite alternate;
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 3rem;
+            max-width: 1100px;
+            width: 100%;
+            padding: 0 1rem;
         }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
+        .review-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 35px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.04);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid rgba(0, 0, 0, 0.01);
+        }
 
-            100% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
+        .review-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.08);
+        }
+
+        .profile-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            margin-bottom: 1.8rem;
+            object-fit: cover;
+            border: 4px solid #ffffff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .reviewer-name {
+            font-weight: 800;
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+            color: var(--text-dark);
+        }
+
+        .reviewer-info {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .review-text {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            font-style: italic;
         }
 
         .btn {
             margin-top: 2.8rem;
-            padding: 1rem 2.8rem;
+            padding: 1.2rem 3.5rem;
             font-size: 1.1rem;
             font-weight: 700;
-            display: inline-block;
-            text-decoration: none;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            outline: none;
             color: white;
-            text-align: center;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-        }
-
-        .btn:active {
-            transform: translateY(-1px) scale(0.98);
-        }
-
-        /* 버튼 색상 클래스 */
-        .btn-blue {
-            background: linear-gradient(135deg, #007aff 0%, #0051d7 100%);
             box-shadow: 0 15px 30px rgba(0, 122, 255, 0.25);
         }
 
-        .btn-blue:hover {
-            box-shadow: 0 20px 40px rgba(0, 122, 255, 0.35);
-            background: linear-gradient(135deg, #1d8fff 0%, #0062ff 100%);
+        .btn:hover { transform: translateY(-3px) scale(1.02); }
+        .btn-blue { background: var(--header-bg); }
+        .btn-yellow { background: linear-gradient(135deg, #ffcc00 0%, #ffb300 100%); color: #1d1d1f; box-shadow: 0 15px 30px rgba(255, 204, 0, 0.25); }
+        .btn-orange { background: linear-gradient(135deg, #ff9500 0%, #ff5e3a 100%); box-shadow: 0 15px 30px rgba(255, 149, 0, 0.25); }
+        .btn-green { background: linear-gradient(135deg, #34c759 0%, #248a3d 100%); box-shadow: 0 15px 30px rgba(52, 199, 89, 0.25); }
+
+        footer {
+            background: var(--footer-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        .btn-yellow {
-            background: linear-gradient(135deg, #ffcc00 0%, #ffb300 100%);
-            box-shadow: 0 15px 30px rgba(255, 204, 0, 0.3);
-            color: #1d1d1f;
-        }
-
-        .btn-yellow:hover {
-            box-shadow: 0 20px 40px rgba(255, 204, 0, 0.45);
-            background: linear-gradient(135deg, #ffdb4d 0%, #ffc400 100%);
-        }
-
-        .btn-orange {
-            background: linear-gradient(135deg, #ff9500 0%, #ff5e3a 100%);
-            box-shadow: 0 15px 30px rgba(255, 149, 0, 0.3);
-            color: white;
-        }
-
-        .btn-orange:hover {
-            box-shadow: 0 20px 40px rgba(255, 149, 0, 0.45);
-            background: linear-gradient(135deg, #ffb34d 0%, #ff7b5e 100%);
-        }
-
-        .btn-green {
-            background: linear-gradient(135deg, #34c759 0%, #248a3d 100%);
-            box-shadow: 0 15px 30px rgba(52, 199, 89, 0.3);
-            color: white;
-        }
-
-        .btn-green:hover {
-            box-shadow: 0 20px 40px rgba(52, 199, 89, 0.45);
-            background: linear-gradient(135deg, #5de07e 0%, #2eb052 100%);
+        footer p {
+            margin: 0;
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
     </style>
 </head>
 
 <body>
-    <div class="glow"></div>
-    <div class="container">
-        <h1 id="main-sentence">오늘도 힘내세요!</h1>
-        <p>INNOVATION & VISION</p>
-        <button class="btn btn-blue" id="next-btn">다음 문장 보기</button>
-    </div>
+    <header>
+        <h1>나의 첫 서비스</h1>
+        <nav>
+            <a href="#">소개</a>
+            <a href="#">기능</a>
+            <a href="#">문의</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section-feature">
+            <h2 class="section-title">핵심 기능 소개</h2>
+            <div class="container">
+                <h2 id="main-sentence">오늘도 힘내세요!</h2>
+                <p class="subtitle">INNOVATION & VISION</p>
+                <button class="btn btn-blue" id="next-btn">다음 문장 보기</button>
+            </div>
+        </section>
+
+        <section class="section-reviews">
+            <h2 class="section-title">사용자 후기</h2>
+            <div class="review-grid">
+                <div class="review-card">
+                    <img src="user_profile_1_1775114427568.png" alt="User 1" class="profile-img">
+                    <div class="reviewer-name">김민준 팀장</div>
+                    <div class="reviewer-info">테크 솔루션즈 IT 운영팀</div>
+                    <p class="review-text">"이 서비스를 사용한 이후로 업무 효율이 200% 상승했습니다. 깔끔한 디자인과 직관적인 UI가 정말 마음에 들어요."</p>
+                </div>
+                <div class="review-card">
+                    <img src="user_profile_2_1775114454674.png" alt="User 2" class="profile-img">
+                    <div class="reviewer-name">이지원 디자이너</div>
+                    <div class="reviewer-info">크리에이티브 스튜디오 아트실</div>
+                    <p class="review-text">"디테일 하나하나 신경 쓴 것이 느껴지는 프리미엄 서비스입니다. 사용자 경험이 매우 부드럽고 만족스럽습니다."</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>2026 My Service</p>
+    </footer>
 
     <script>
         const sentences = [
@@ -178,23 +304,17 @@
         const nextBtn = document.getElementById('next-btn');
 
         nextBtn.addEventListener('click', () => {
-            // 전환 효과 시작 (텍스트)
             titleElement.style.opacity = '0';
             titleElement.style.transform = 'translateY(10px)';
             titleElement.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
 
             setTimeout(() => {
-                // 인덱스 증가 및 문구 변경
                 currentIndex = (currentIndex + 1) % sentences.length;
                 titleElement.textContent = sentences[currentIndex];
 
-                // 버튼 테마 클래스 배열
                 const themes = ['btn-blue', 'btn-yellow', 'btn-orange', 'btn-green'];
-
-                // 클래스 교체 (기존 클래스 모두 제거 후 필수 클래스 추가)
                 nextBtn.className = 'btn ' + themes[currentIndex];
 
-                // 전환 효과 종료 (텍스트)
                 titleElement.style.opacity = '1';
                 titleElement.style.transform = 'translateY(0)';
             }, 300);
